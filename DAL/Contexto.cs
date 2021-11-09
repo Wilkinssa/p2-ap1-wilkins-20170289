@@ -11,10 +11,13 @@ namespace p2_ap1_wilkins_20170289.DAL
     public class Contexto : DbContext
     {
         public DbSet<Tareas> Tareas { get; set; }
+        public DbSet<Proyectos> Proyectos{ get; set; }
+       
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source = Data\ProyectosTareas.db");
+            optionsBuilder.UseSqlite(@"Data Source = Data\ProyectosTareas.db"); 
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
