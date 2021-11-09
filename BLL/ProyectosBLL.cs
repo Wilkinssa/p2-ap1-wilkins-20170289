@@ -11,19 +11,19 @@ namespace p2_ap1_wilkins_20170289.BLL
 {
     public class ProyectosBLL
     {
-        GUARDAR
+        //GUARDAR
         public static bool Guardar(Proyectos proyectos)
         {
             bool paso;
 
             if (!Existe(proyectos.ProyectoId))
-               paso = Insertar(proyectos);
+                paso = Insertar(proyectos);
             else
                 paso = Modificar(proyectos);
 
             return paso;
         }
-        INSERTAR
+        //INSERTAR
         public static bool Insertar(Proyectos proyectos)
         {
             Contexto contexto = new Contexto();
@@ -50,25 +50,25 @@ namespace p2_ap1_wilkins_20170289.BLL
 
             return paso;
         }
-        MODIFICAR
+        //MODIFICAR
         public static bool Modificar(Proyectos proyectos)
         {
             Contexto contexto = new Contexto();
             bool paso = false;
 
-           try
+            try
             {
-               contexto.Database.ExecuteSqlRaw($"DELETE FROM ProyectosDetalle WHERE ProyectoId={proyectos.ProyectoId}");
+                contexto.Database.ExecuteSqlRaw($"DELETE FROM ProyectosDetalle WHERE ProyectoId={proyectos.ProyectoId}");
 
                 foreach (var item in proyectos.Detalle)
                 {
-                   contexto.Entry(item).State = EntityState.Added;
+                    contexto.Entry(item).State = EntityState.Added;
                 }
 
                 contexto.Entry(proyectos).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
-           catch (Exception)
+            catch (Exception)
             {
                 throw;
             }
@@ -79,24 +79,24 @@ namespace p2_ap1_wilkins_20170289.BLL
 
             return paso;
         }
-        ELIMINAR
+        //ELIMINAR
         public static bool Eliminar(int id)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
-           try
+            try
             {
-               var proyectos = ProyectosBLL.Buscar(id);
+                var proyectos = ProyectosBLL.Buscar(id);
                 if (proyectos != null)
                 {
                     contexto.Proyectos.Remove(proyectos);
-                   paso = contexto.SaveChanges() > 0;
-               }
+                    paso = contexto.SaveChanges() > 0;
+                }
             }
             catch (Exception)
-           {
+            {
                 throw;
-           }
+            }
             finally
             {
                 contexto.Dispose();
@@ -104,13 +104,13 @@ namespace p2_ap1_wilkins_20170289.BLL
 
             return paso;
         }
-        GETLIST
+        //GETLIST
         public static List<Proyectos> GetList(Expression<Func<Proyectos, bool>> criterio)
         {
-           List<Proyectos> lista = new List<Proyectos>();
+            List<Proyectos> lista = new List<Proyectos>();
             Contexto contexto = new Contexto();
 
-           try
+            try
             {
                 lista = contexto.Proyectos.Where(criterio).ToList();
             }
@@ -125,7 +125,7 @@ namespace p2_ap1_wilkins_20170289.BLL
 
             return lista;
         }
-        EXISTE
+        //EXISTE
         public static bool Existe(int id)
         {
             bool encontrado = false;
@@ -146,7 +146,7 @@ namespace p2_ap1_wilkins_20170289.BLL
 
             return encontrado;
         }
-        BUSCAR
+        //BUSCAR
         public static Proyectos Buscar(int id)
         {
             Contexto contexto = new Contexto();
@@ -171,28 +171,26 @@ namespace p2_ap1_wilkins_20170289.BLL
 
             return proyectos;
         }
-        GET
+        //GET
         public static List<Proyectos> GetProyectos()
         {
             Contexto contexto = new Contexto();
             List<Proyectos> lista = new List<Proyectos>();
 
-            ion)
-                {
-                w
-                    throw;
-            }
-                finally
-            {
-                contexto.Dispose();
-            }
             try
             {
                 lista = contexto.Proyectos.ToList();
             }
-            catch (Except
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
 
             return lista;
-            }
         }
     }
+}

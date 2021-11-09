@@ -56,6 +56,9 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>Resources.resx</DependentUpon>
 	  </Compile>
+	  <Compile Update="UI\Consultas\cProyectos.xaml.cs">
+	    <SubType>Code</SubType>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -67,6 +70,13 @@
 
 	<ItemGroup>
 	  <Folder Include="Data\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Update="UI\Consultas\cProyectos.xaml">
+	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+	    <SubType>Designer</SubType>
+	  </Page>
 	</ItemGroup>
 
 </Project>

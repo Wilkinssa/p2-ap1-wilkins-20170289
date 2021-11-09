@@ -15,7 +15,7 @@
                 </MenuItem>
 
                 <MenuItem Header="Consultas">
-                    <MenuItem x:Name="cTareasMenuItem" Click="cTareasMenuItem_Click" Header="Consultar Tarea"/>
+                    <MenuItem x:Name="cTareasMenuItem" Click="cTareasMenuItem_Click" Header="Consultar Tareas"/>
                     <MenuItem x:Name="cPRoyectosMenuItem" Click="cProyectosMenuItem_Click" Header="Consultar Proyectos"/>
                 </MenuItem>
             </Menu>

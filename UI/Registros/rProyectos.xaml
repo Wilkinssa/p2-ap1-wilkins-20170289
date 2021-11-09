@@ -11,7 +11,7 @@
             <!--PROYECTO ID-->
             <Label Content="Proyecto Id" FontWeight="Bold" Margin="0,10,0,0"/>
             <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="ProyectoIdTextBox"  Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" TextChanged="ProyectoIdTextBox_TextChanged"/>
+                <TextBox x:Name="ProyectoIdTextBox" Text="{Binding ProyectoId}" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" TextChanged="ProyectoIdTextBox_TextChanged"/>
 
                 <!--BUSCAR-->
                 <Button x:Name="BuscarButton" Margin="10,0,0,0" Width="90" Click="BuscarButton_Click">
@@ -24,11 +24,11 @@
 
             <!--FECHA-->
             <Label Content="Fecha" FontWeight="SemiBold" Margin="0,10,0,0"/>
-            <DatePicker x:Name="FechaDatePicker"  HorizontalAlignment="Left" VerticalContentAlignment="Center" Width="150" Height="25"/>
+            <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha}" HorizontalAlignment="Left" VerticalContentAlignment="Center" Width="150" Height="25"/>
 
             <!--DESCRIPCION-->
             <Label Content="Descripcion del Proyecto" FontWeight="SemiBold" Margin="0,10,0,0"/>
-            <TextBox x:Name="DescripcionTextBox"  Height="50" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" Height="50" VerticalContentAlignment="Center"/>
 
             <!--DETALLE-->
             <StackPanel Orientation="Vertical">
@@ -61,12 +61,12 @@
                             </StackPanel>
                         </StackPanel>
                         <!--DATA GRID-->
-                        <DataGrid x:Name="DetalleDataGrid"  Height="100" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" Margin="0,10,0,0">
+                        <DataGrid x:Name="DetalleDataGrid" ItemsSource="{Binding Detalle}" Height="100" AutoGenerateColumns="False" AlternatingRowBackground="LightGray" Margin="0,10,0,0">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="TipoId" />
-                                <DataGridTextColumn Header="Tipo Tarea" />
-                                <DataGridTextColumn Header="Requerimiento" />
-                                <DataGridTextColumn Header="Tiempo" />
+                                <DataGridTextColumn Header="TipoId" Binding="{Binding TareaId}"/>
+                                <DataGridTextColumn Header="Tipo Tarea" Binding="{Binding tareas.TipoTarea}"/>
+                                <DataGridTextColumn Header="Requerimiento" Binding="{Binding Requerimiento}"/>
+                                <DataGridTextColumn Header="Tiempo" Binding="{Binding Tiempo}"/>
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -81,7 +81,7 @@
 
                             <!--TIEMPO TOTAL-->
                             <Label Content="Tiempo Total  " FontWeight="SemiBold" Margin="160,0,0,0"/>
-                            <TextBox x:Name="TiempoTotalTextBox"  Height="25" Width="150" VerticalContentAlignment="Center" IsReadOnly="True"/>
+                            <TextBox x:Name="TiempoTotalTextBox" Text="{Binding TiempoTotal}" Height="25" Width="150" VerticalContentAlignment="Center" IsReadOnly="True"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
